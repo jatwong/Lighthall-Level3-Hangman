@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}
+
+.label {
+    font-family: 'Slackey';
+    color: #4E739A;
+    display: block;
+    font-size: x-large;
+    cursor: default;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    width: 400px;
+    height: 50px;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.input:focus-visible {
+    outline: 2px solid #4E739A;
+}
+
+.icon {
+    margin-left: 10px;
+    display: flex;
+    align-self: flex-end;
+    height: 50px;
+    cursor: pointer;
+}
