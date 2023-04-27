@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Slackey&display=swap');
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4E739A;
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 320px;
+    height: 510px;
+}
+
+.title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Slackey';
+    color: #F6F1DF;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #F6F1DF;
+}
+
+.title p,
+.title h2 {
+    margin: 0;
+    font-weight: 400;
+}
+
+.scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Patrick Hand';
+    font-size: 1.5em;
+    color:#F6F1DF;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.scores p {
+    margin: 0;
+}
+
+
+@media screen and (max-width: 400px) {
+    .leaderboard {
+        min-width: 300px;
+        height: 450px;
+    }
+    
+    .scores {
+        gap: 5px;
+    }
+}
