@@ -3,10 +3,21 @@
 // dashCount = maxLength - nameLength
 
 const ScoreRow = (props) => {
-
-
-
-  return <p>{props.count}. {props.name} -------------------------- {props.score}</p>;
+  let row = "";
+  if (props.name === "" && props.score === 0) {
+    row = (
+      <p>
+        {props.count}. {props.dashes}
+      </p>
+    );
+  } else {
+    row = (
+      <p>
+        {props.count}. {props.name} {props.dashes} {props.score}
+      </p>
+    );
+  }
+  return row;
 };
 
 export default ScoreRow;
