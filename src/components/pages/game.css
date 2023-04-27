@@ -64,3 +64,12 @@
     background-color: #F6F1DF;
     cursor: pointer;
 }
+
+.img-container{
+    position: absolute;
+    width: 954px;
+    height: 71px;
+    left: 343px;
+    top: 524px;
+    align-content: center;
+}

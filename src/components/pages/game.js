@@ -23,7 +23,6 @@ const Game = () => {
                 </div>
             </div>
             <div className='word-container'>
-                {/* Display the letters for hangman game */}
                 <div>
                 {letters1.split('').map((letter, index) => (
                     <button className='letter-btn1' key={index}>{letter}</button>
@@ -34,6 +33,9 @@ const Game = () => {
                     <button className='letter-btn2' key={index}>{letter}</button>
                 ))}
                 </div>
+            </div>
+            <div className='img-container'>
+                <img></img>
             </div>
         </div>
     );
