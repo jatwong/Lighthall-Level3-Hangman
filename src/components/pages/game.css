@@ -1,0 +1,66 @@
+.game-container{
+    height: 100vh;
+}
+
+.user-stats{
+    position: absolute;
+    left: 209px;
+    top: 154px;
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    font-size: 20px;
+    color: #4E739A;
+    text-align: center;
+    align-items: center;
+    max-width: 300px;
+}
+
+.name{
+    height: 18px;
+}
+
+.hint-btn{
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 30px;
+    background-color: #4E739A;
+    border: none;
+    font-family: 'Patrick Hand SC';
+    font-style: normal;
+    text-align: center;
+    cursor: pointer;
+    max-width: 400px;
+}
+
+.word-container{
+    position: absolute;
+    width: 954px;
+    height: 71px;
+    left: 343px;
+    top: 524px;
+    align-content: center;
+}
+
+.letter-btn1{
+    font-family: Slackey;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 71px;
+    letter-spacing: 0.39em;
+    text-align: left;
+    border: none;
+    background-color: #F6F1DF;
+    cursor: pointer;
+}
+
+.letter-btn2{
+    font-family: Slackey;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 71px;
+    letter-spacing: 0.39em;
+    text-align: left;
+    border: none;
+    background-color: #F6F1DF;
+    cursor: pointer;
+}
