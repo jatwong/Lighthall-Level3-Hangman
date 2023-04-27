@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Slackey&display=swap');
+
+.page {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 6rem;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: 'Fredericka the Great';
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 50px;
+}
+
+.options button {
+    background-color: #4E739A;
+    border-radius: 10px;
+    border: none;
+    color: #F6F1DF;
+    font-family: 'Slackey';
+    font-size: 1.5em;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+    .page {
+        flex-direction: column-reverse;
+    }
+}

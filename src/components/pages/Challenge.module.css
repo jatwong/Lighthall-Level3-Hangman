@@ -1,18 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Slackey&display=swap');
 
 .page {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 8rem;
+    margin-top: 6rem;
+    width: 100%;
 }
 
-.label {
+.title {
     font-family: 'Slackey';
     color: #4E739A;
     display: block;
-    font-size: x-large;
+    font-size: 2.5em;
     cursor: default;
+    margin: 0;
+}
+
+.instructions {
+    font-family: 'Patrick Hand';
+    color: #4E739A;
+    font-size: x-large;
+    margin: 0;
+    margin-bottom: 5rem;
 }
 
 .inputDiv {
