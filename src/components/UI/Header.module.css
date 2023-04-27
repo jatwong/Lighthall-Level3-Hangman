@@ -33,7 +33,7 @@
     color: #D6E5E2;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .mobile {
         position: sticky;
     }

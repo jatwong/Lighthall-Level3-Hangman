@@ -2,17 +2,19 @@
 
 .page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 6rem;
     width: 100%;
+    text-align: center;
 }
 
 .title {
     font-family: 'Slackey';
     color: #4E739A;
     display: block;
-    font-size: 2.5em;
+    font-size: 2.5rem;
     cursor: default;
     margin: 0;
 }
@@ -22,33 +24,85 @@
     color: #4E739A;
     font-size: x-large;
     margin: 0;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
-.inputDiv {
+.form div {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 1.5rem;
 }
 
-.input {
+.form label {
+    display: block;
+    font-family: 'Patrick Hand';
+    font-size: larger;
+    color: #4E739A;
+    margin-bottom: 0.5rem;
+}
+
+.form input {
+    width: 400px;
+    height: 35px;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+}
+
+.form textarea {
     width: 400px;
     height: 50px;
     padding: 0.5em;
     box-sizing: border-box;
     border: none;
     border-radius: 5px;
-    text-align: center;
 }
 
-.input:focus-visible {
+.form input:focus-visible,
+.form textarea:focus-visible {
     outline: 2px solid #4E739A;
 }
 
-.icon {
-    margin-left: 10px;
+.submit {
+    margin-top: 1rem;
+    color: #F6F1DF;
+    font-size: larger;
+    font-family: 'Patrick Hand';
+    height: 40px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4E739A;
+    outline: none;
+}
+
+.share {
     display: flex;
-    align-self: flex-end;
-    height: 50px;
-    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Patrick Hand';
+    color: #4E739A;
+    margin-top: 2rem;
+    font-size: larger;
+}
+
+.link {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 2rem;
+    }
+    .instructions {
+        font-size: larger;
+    }
+
+    .form input,
+    .form textarea {
+        width: 350px;
+    }
 }

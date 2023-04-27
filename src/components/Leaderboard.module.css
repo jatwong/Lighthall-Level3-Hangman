@@ -44,10 +44,10 @@
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .leaderboard {
         min-width: 300px;
-        height: 450px;
+        height: 470px;
     }
     
     .scores {

@@ -8,9 +8,9 @@ import Landing from "./components/pages/Landing";
 function App() {
   return (
     <div className={classes.mainPage}>
-      <Landing />
-      {/* <Header /> */}
-      {/* <Challenge /> */}
+      {/* <Landing /> */}
+      <Header />
+      <Challenge />
       {/* <RankGameLogin /> */}
       {/* <Game /> */}
     </div>

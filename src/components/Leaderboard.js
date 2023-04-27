@@ -7,17 +7,24 @@ const DUMMY_SCORES = [
   { name: "Jo", score: 900 },
   { name: "A", score: 800 },
   { name: "Kat", score: 800 },
-  { name: "Larry", score: 700 },
-  { name: "Bob", score: 700 },
-  { name: "John", score: 600 },
-  { name: "Kat", score: 300 },
-  { name: "", score: 0}
+  // { name: "Larry", score: 700 },
+  // { name: "Bob", score: 700 },
+  // { name: "John", score: 600 },
+  // { name: "Kat", score: 300 },
+  { name: "", score: 0 },
 ];
 
 const Leaderboard = () => {
+  const topTen = (scoreList) => {
+    while (scoreList.length < 10) {
+      scoreList.push({ name: "", score: 0 });
+    }
+    return scoreList;
+  };
+
   const getDashes = (player) => {
     if (player.name === "" && player.score === 0) {
-      return "-".repeat(26);
+      return "-".repeat(27);
     } else {
       const dashCount = 26 - player.name.length - String(player.score).length;
       const dashes = "-".repeat(dashCount);
@@ -34,7 +41,7 @@ const Leaderboard = () => {
         <p>(Top 10)</p>
       </div>
       <div className={classes.scores}>
-        {DUMMY_SCORES.map((player) => (
+        {topTen(DUMMY_SCORES).map((player) => (
           <ScoreRow
             key={count}
             count={count++}
