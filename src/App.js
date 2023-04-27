@@ -6,7 +6,7 @@ import Game from "./components/pages/game";
 function App() {
   return (
     <div className={classes.mainPage}>
-      <Header />
+      {/* <Header /> */}
       {/* <RankGame /> */}
       <Game />
     </div>

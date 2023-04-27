@@ -73,3 +73,12 @@
     top: 524px;
     align-content: center;
 }
+
+.word-arr{
+    position: absolute;
+    width: 800px;
+    height: 71px;
+    left: 543px;
+    top: 364px;
+    align-content: center;
+}
