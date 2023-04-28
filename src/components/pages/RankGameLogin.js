@@ -151,11 +151,13 @@ const RankGameLogin = () => {
         username={username}
         score={score}
         word={word}
+        setWord={setWord}
         userid={userId}
         guessesLeft={guesses_left || 8}
-        setGuessedLetters={setGuessedLetters}
+        setGuessesLeft={setGuessesLeft}
         guessedLetters={guessedLetters || ""}
-        hintsLeft={hints_left}
+        setGuessedLetters={setGuessedLetters}
+        setScore={setScore}
       />
     );
   }

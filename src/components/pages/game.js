@@ -16,16 +16,7 @@ import hang7 from '../UI/img/Hang-7.png';
 import hangFinal from '../UI/img/Hang-final.png';
 
 const Game = (props) => {
-  const [word, setWord] = useState(props.word);
-  const [currentScore, setCurrentScore] = useState(props.score);
-
-  const [guessesLeft, setGuessesLeft] = useState(props.guessesLeft || 8);
-  const [wrong, setWrong] = useState(guessesLeft);
-
-  const [hintsLeft, setHintsLeft] = useState(props.hintsLeft || 3);
-
-  // props.def
-  const [def, setDef] = useState('');
+  const [wrong, setWrong] = useState(props.guessesLeft);
 
   const [isWinner, setIsWinner] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -97,7 +88,7 @@ const Game = (props) => {
           setWrong(wrong - 1);
           setTimeout(() => {
             setGameOver(true);
-            setCurrentScore(data.score);
+            props.setScore(data.score);
           }, 1000);
           logout();
         }
@@ -105,12 +96,12 @@ const Game = (props) => {
         if (data.won) {
           setIsWinner(true);
           setGameOver(true);
-          setCurrentScore(data.score);
+          props.setScore(data.score);
         }
 
-        setGuessesLeft(data.guesses_left);
+        props.setGuessesLeft(data.guesses_left);
 
-        setWord(data.word);
+        props.setWord(data.word);
 
         // set hints_left -- for displaying to user
       });
@@ -127,10 +118,11 @@ const Game = (props) => {
         return res.json();
       })
       .then((jsonbody) => {
-        setCurrentScore(jsonbody.score);
-        setWord(jsonbody.word);
-        setGuessesLeft(jsonbody.guesses_left);
-        setHintsLeft(jsonbody.hints_left);
+        props.setScore(jsonbody.score);
+        props.setWord(jsonbody.word);
+        props.setGuessesLeft(jsonbody.guesses_left);
+        props.setGuessedLetters("")
+        setWrong(8)
       });
 
     setGameOver(false);
@@ -147,7 +139,7 @@ const Game = (props) => {
         <div className='user-stats'>
           <div>
             <h1 className='name'>{props.username}</h1>
-            <h1 className='score'>Score: {currentScore}</h1>
+            <h1 className='score'>Score: {props.score}</h1>
           </div>
           {/* <div className='hint-grp'>
             <button className='def-btn' onClick={() => getHint('def')}>
@@ -185,14 +177,14 @@ const Game = (props) => {
               ))}
             </div>
           </div>
-          <div className='word-arr'>{word}</div>
+          <div className='word-arr'>{props.word}</div>
           <div className='img-container'>
             <img className='img' src={getimage()} alt='hangman' />
           </div>
           {gameOver && (
             <GameOver
               username={props.username}
-              score={currentScore}
+              score={props.score}
               win={isWinner}
               next={nextGameHandler}
             />
