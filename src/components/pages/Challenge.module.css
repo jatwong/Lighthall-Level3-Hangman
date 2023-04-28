@@ -76,6 +76,7 @@
     border: none;
     background-color: #4E739A;
     outline: none;
+    cursor: pointer;
 }
 
 .share {
@@ -88,9 +89,20 @@
     font-size: larger;
 }
 
+.linkGroup {
+    display: flex;
+    align-items: center;
+}
+
 .link {
     margin: 0;
     font-size: 1.5rem;
+}
+
+.copy {
+    height: 1.5rem;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 450px) {

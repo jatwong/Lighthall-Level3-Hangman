@@ -1,10 +1,16 @@
-import Leaderboard from "../Leaderboard";
-import classes from "./Landing.module.css";
+import { useNavigate } from 'react-router-dom';
+import Leaderboard from '../Leaderboard';
+import classes from './Landing.module.css';
 
 const Landing = () => {
-  
-  const playGameHandler = () => {};
-  const createGameHandler = () => {};
+  const navigate = useNavigate();
+
+  const playGameHandler = () => {
+    navigate('/play-game');
+  };
+  const createGameHandler = () => {
+    navigate('/create-game');
+  };
 
   return (
     <div className={classes.page}>
