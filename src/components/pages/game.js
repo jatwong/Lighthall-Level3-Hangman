@@ -14,9 +14,12 @@ import hang5 from '../UI/img/Hang-5.png';
 import hang6 from '../UI/img/Hang-6.png';
 import hang7 from '../UI/img/Hang-7.png';
 import hangFinal from '../UI/img/Hang-final.png';
+import { useNavigate } from 'react-router-dom';
 
 const Game = (props) => {
   const [wrong, setWrong] = useState(props.guessesLeft);
+
+  const navigate = useNavigate();
 
   const [isWinner, setIsWinner] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -123,14 +126,19 @@ const Game = (props) => {
         return res.json();
       })
       .then((jsonbody) => {
+        if (jsonbody.message === "You have guessed all the words!") {
+          logout()
+          navigate("/")
+        }
         props.setScore(jsonbody.score);
         props.setWord(jsonbody.word);
         props.setGuessesLeft(jsonbody.guesses_left);
         props.setGuessedLetters("")
         setWrong(8)
+        setGameOver(false);
       });
 
-    setGameOver(false);
+    
   };
 
   const getimage = () => {

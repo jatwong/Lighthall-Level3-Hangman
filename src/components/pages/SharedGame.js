@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Game from './game';
 
-
 const SharedGame = () => {
   const navigate = useNavigate();
 
@@ -18,6 +17,8 @@ const SharedGame = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+
     fetch(`https://hangmanserver.jayraval20.repl.co/word/${id}`, {
       method: 'GET',
       headers: {
@@ -40,6 +41,7 @@ const SharedGame = () => {
 
   return (
     <>
+      {loading && <div>Loading...</div>}
       <Game
         end={endGameHandler}
         username={''}
@@ -52,6 +54,7 @@ const SharedGame = () => {
         guessedLetters={guessedLetters || ''}
         setGuessedLetters={setGuessedLetters}
         setScore={setScore}
+        isShared={true}
       />
     </>
   );

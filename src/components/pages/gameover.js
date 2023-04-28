@@ -20,7 +20,22 @@ const GameOver = (props) => {
   };
 
   let win;
-  if (props.win) {
+  if (props.win && props.isShared) {
+    win = (
+      <>
+        <div className='win'>
+          <h1>Winner!</h1>
+        </div>
+        <div className='content'>
+          {<h2>{props.username}</h2>}
+          <h2>Final Score: {props.score}</h2>
+        </div>
+        <button className='ok-btn' onClick={handleOkClick}>
+          OK
+        </button>
+      </>
+    );
+  } else if (props.win) {
     win = (
       <>
         <div className='win'>
