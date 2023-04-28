@@ -21,9 +21,6 @@ const Game = (props) => {
 
   const [guessesLeft, setGuessesLeft] = useState(props.guessesLeft || 8);
   const [wrong, setWrong] = useState(guessesLeft);
-  const [guessedLetters, setGuessedLetters] = useState(
-    props.guessedLetters || ''
-  );
 
   const [hintsLeft, setHintsLeft] = useState(props.hintsLeft || 3);
 
@@ -53,27 +50,27 @@ const Game = (props) => {
     Cookies.remove('username');
   };
 
-  const getHint = (clue) => {
-    fetch(
-      `https://hangmanserver.jayraval20.repl.co/hint/${props.userid}/${clue}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if (clue === 'def') {
-          setDef(data.definition);
-        } else if (clue === 'pop') {
-          // set word
-        }
-      });
-  };
+  // const getHint = (clue) => {
+  //   fetch(
+  //     `https://hangmanserver.jayraval20.repl.co/hint/${props.userid}/${clue}`,
+  //     {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     }
+  //   )
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       if (clue === 'def') {
+  //         setDef(data.definition);
+  //       } else if (clue === 'pop') {
+  //         // set word
+  //       }
+  //     });
+  // };
 
   const handleletterclick = (letter) => {
     fetch(
@@ -92,7 +89,7 @@ const Game = (props) => {
         return response.json();
       })
       .then((data) => {
-        setGuessedLetters(data.letters_guessed);
+        props.setGuessedLetters(data.letters_guessed);
 
         if (data.flag === 'wrong' && data.guesses_left > 0) {
           setWrong(wrong - 1);
@@ -133,7 +130,6 @@ const Game = (props) => {
         setCurrentScore(jsonbody.score);
         setWord(jsonbody.word);
         setGuessesLeft(jsonbody.guesses_left);
-        setGuessedLetters(jsonbody.letters_guessed);
         setHintsLeft(jsonbody.hints_left);
       });
 
@@ -153,14 +149,14 @@ const Game = (props) => {
             <h1 className='name'>{props.username}</h1>
             <h1 className='score'>Score: {currentScore}</h1>
           </div>
-          <div className='hint-grp'>
+          {/* <div className='hint-grp'>
             <button className='def-btn' onClick={() => getHint('def')}>
               Get definition
             </button>
             <button className='hint-btn' onClick={() => getHint('pop')}>
               Get hint
             </button>
-          </div>
+          </div> */}
         </div>
         <div className='game-container'>
           <div className='word-container'>
@@ -170,7 +166,7 @@ const Game = (props) => {
                   onClick={() => handleletterclick(letter)}
                   className='letter-btn1'
                   key={index}
-                  disabled={guessedLetters.includes(letter)}
+                  disabled={props.guessedLetters.includes(letter)}
                 >
                   {letter}
                 </button>
@@ -182,7 +178,7 @@ const Game = (props) => {
                   onClick={() => handleletterclick(letter)}
                   className='letter-btn2'
                   key={index}
-                  disabled={guessedLetters.includes(letter)}
+                  disabled={props.guessedLetters.includes(letter)}
                 >
                   {letter}
                 </button>
