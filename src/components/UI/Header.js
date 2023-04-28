@@ -1,6 +1,12 @@
 import classes from "./Header.module.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleexit = () => {
+    navigate('/');
+  }
+  
   return (
     <div className={classes.mobile}>
       <header className={classes.header}>

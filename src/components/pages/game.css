@@ -37,7 +37,7 @@
     width: 954px;
     height: 71px;
     left: 343px;
-    top: 524px;
+    top: 564px;
     align-content: center;
 }
 
@@ -65,12 +65,12 @@
     cursor: pointer;
 }
 
-.img-container{
+.img{
     position: absolute;
-    width: 954px;
-    height: 71px;
-    left: 343px;
-    top: 524px;
+    width: 480px;
+    height: 400px;
+    left: 543px;
+    top:64px;
     align-content: center;
 }
 
@@ -79,6 +79,6 @@
     width: 800px;
     height: 71px;
     left: 543px;
-    top: 364px;
+    top: 464px;
     align-content: center;
 }
