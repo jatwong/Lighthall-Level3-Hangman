@@ -1,0 +1,43 @@
+.gameover-container{
+    background: #1E1E1E;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.gameover{
+    position : absolute;
+    height: 437px;
+    width: 671px;
+    left: 385px;
+    top: 194px;
+    border-radius: 30px;
+    background: #F7F1DF;
+    text-align: center;
+}
+
+.geor{
+    color: red;
+    font-family: Slackey;
+}
+
+.ok-btn{
+    font-family: Slackey;
+    font-size: 50px;
+    border: none;
+    background: #F7F1DF;
+    color: #4E739A;
+}
+
+.username{
+    font-family: Patrick Hand SC;
+
+}
+
+.final-score{
+    font-family: Patrick Hand SC;
+    font-size: 50px;
+    color: #4E739A;
+}
