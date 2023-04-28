@@ -93,10 +93,15 @@ const Game = (props) => {
           logout();
         }
 
-        if (data.won) {
+        if (data.won && data.score !== 1000) {
           setIsWinner(true);
           setGameOver(true);
           props.setScore(data.score);
+        }
+
+        if (data.score === 1000) {
+          setGameOver(true)
+          logout();
         }
 
         props.setGuessesLeft(data.guesses_left);
