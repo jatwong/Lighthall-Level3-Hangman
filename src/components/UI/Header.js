@@ -1,6 +1,4 @@
 import classes from "./Header.module.css";
-import { useNavigate } from 'react-router-dom';
-
 const Header = (props) => {
   let content = '';
   if (props.page === 'game') {
@@ -8,7 +6,6 @@ const Header = (props) => {
   } else {
     content = 'Back';
   }
-  const navigate = useNavigate();
   
   return (
     <div className={classes.mobile}>
