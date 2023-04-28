@@ -1,5 +1,5 @@
 .gameover-container{
-    background: #1E1E1E;
+    background-color: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
     left: 0;
@@ -8,36 +8,47 @@
 }
 
 .gameover{
-    position : absolute;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 25vh;
+    left: 34vw;
+    /* position : absolute; */
     height: 437px;
     width: 671px;
-    left: 385px;
-    top: 194px;
+    /* left: 385px;
+    top: 194px; */
     border-radius: 30px;
     background: #F7F1DF;
     text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 .geor{
-    color: red;
+    color: #B94E61;
     font-family: Slackey;
+    font-size: x-large;
+}
+
+.win{
+    color: #4eb960;
+    font-family: Slackey;
+    font-size: x-large;
 }
 
 .ok-btn{
     font-family: Slackey;
-    font-size: 50px;
+    font-size: 2.5rem;
     border: none;
     background: #F7F1DF;
     color: #4E739A;
+    margin-top: 3rem;
 }
 
-.username{
-    font-family: Patrick Hand SC;
 
-}
-
-.final-score{
+.content h2 {
     font-family: Patrick Hand SC;
-    font-size: 50px;
-    color: #4E739A;
+    font-size: 45px;
+    margin: 0;
 }

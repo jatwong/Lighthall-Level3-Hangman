@@ -1,11 +1,22 @@
-.game-container{
-    height: 100vh;
+.page {
+    display: flex;
 }
 
-.user-stats{
-    position: absolute;
+.game-container {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.user-stats {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7rem;
+    /* position: absolute;
     left: 209px;
-    top: 154px;
+    top: 154px; */
     font-family: 'Patrick Hand SC';
     font-style: normal;
     font-size: 20px;
@@ -15,33 +26,59 @@
     max-width: 300px;
 }
 
-.name{
+.name {
     height: 18px;
 }
 
-.hint-btn{
+.hint-grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.hint-btn {
     border-radius: 20px;
-    color: #ffffff;
-    font-size: 30px;
+    color: #F6F1DF;
+    font-size: 1.5rem;
     background-color: #4E739A;
     border: none;
     font-family: 'Patrick Hand SC';
-    font-style: normal;
     text-align: center;
     cursor: pointer;
-    max-width: 400px;
+    width: 5em;
+    box-sizing: border-box;
+    padding: 5px;
+    /* max-width: 400px; */
 }
 
-.word-container{
-    position: absolute;
+.def-btn {
+    border-radius: 20px;
+    color: #F6F1DF;
+    font-size: 1.5rem;
+    background-color: #4E739A;
+    border: none;
+    font-family: 'Patrick Hand SC';
+    text-align: center;
+    cursor: pointer;
+    width: 7em;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* position: absolute;
     width: 954px;
     height: 71px;
     left: 343px;
-    top: 564px;
+    top: 647px; */
     align-content: center;
 }
 
-.letter-btn1{
+.letter-btn1 {
     font-family: Slackey;
     font-size: 50px;
     font-weight: 400;
@@ -53,7 +90,7 @@
     cursor: pointer;
 }
 
-.letter-btn2{
+.letter-btn2 {
     font-family: Slackey;
     font-size: 50px;
     font-weight: 400;
@@ -65,20 +102,31 @@
     cursor: pointer;
 }
 
-.img{
-    position: absolute;
-    width: 480px;
-    height: 400px;
+.letter-btn1:disabled,
+.letter-btn2:disabled {
+    cursor: default;
+}
+
+.img {
+    display: flex;
+    width: 30rem;
+    /* width: 480px; */
+    /* position: absolute; */
+    /* height: 400px;
     left: 543px;
-    top:64px;
+    top: 64px; */
     align-content: center;
 }
 
-.word-arr{
-    position: absolute;
-    width: 800px;
-    height: 71px;
-    left: 543px;
-    top: 464px;
-    align-content: center;
+.word-arr {
+    /* margin-top: 400px; */
+    /* position: absolute; */
+    /* width: 800px;
+    height: 71px; */
+    /* left: 625px;
+    top: 464px; */
+    font-family: Slackey;
+    letter-spacing: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
 }

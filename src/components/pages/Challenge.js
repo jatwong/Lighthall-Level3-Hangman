@@ -1,7 +1,9 @@
+import Header from '../UI/Header';
+
 import classes from './Challenge.module.css';
 import copy from '../UI/icons/copy.svg';
+
 import { useState } from 'react';
-import Header from '../UI/Header';
 import { useNavigate } from 'react-router-dom';
 
 const Challenge = () => {
@@ -23,7 +25,16 @@ const Challenge = () => {
 
   const createGame = () => {
     setNewGame(true);
-    console.log('submitted', word, definition);
+    fetch('https://hangmanserver.jayraval20.repl.co/single-game', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        word: word,
+        definition: definition,
+      }),
+    });
   };
 
   const goBackHandler = () => {

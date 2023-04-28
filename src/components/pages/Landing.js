@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+
 import Leaderboard from '../Leaderboard';
+
 import classes from './Landing.module.css';
 
 const Landing = () => {
