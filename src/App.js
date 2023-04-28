@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/play-game' element={<RankGameLogin />} />
-        <Route path='/shared-game/*' element={<SharedGame />} />
+        <Route path='/shared-game/:id' element={<SharedGame />} />
         <Route path='/create-game' element={<Challenge />} />
       </Routes>
     </div>

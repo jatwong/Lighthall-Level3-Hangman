@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 const Challenge = () => {
   const navigate = useNavigate();
   const [word, setWord] = useState('');
-  const [definition, setDefinition] = useState('');
   const [newGame, setNewGame] = useState(false);
 
   const [hasError, setHasError] = useState(false);
@@ -23,14 +22,16 @@ const Challenge = () => {
     setWord(e.target.value);
   };
 
-  const enterDefinition = (e) => {
-    setDefinition(e.target.value);
+  const submitWord = (e) => {
+    if (e.keycode === 13 || e.key === 'Enter') {
+      createGame()
+    }
   };
 
   let valid = false;
   const hasSpaces = new RegExp(/\s/);
 
-  if (word !== '' && definition !== '' && definition.length > 2) {
+  if (word !== '') {
     valid = true;
   }
 
@@ -48,7 +49,7 @@ const Challenge = () => {
         },
         body: JSON.stringify({
           word: word,
-          definition: definition,
+          definition: "",
         }),
       })
         .then((res) => {
@@ -56,7 +57,7 @@ const Challenge = () => {
         })
         .then((data) => {
           setNewGame(true);
-          setLink('https://lighthall-team60-hangman.vercel.app' + data.url);
+          setLink('https://lighthall-team60-hangman.vercel.app/shared-game/' + data.url);
         });
     }
   };
@@ -78,25 +79,26 @@ const Challenge = () => {
           Pick a word for your friend to guess
         </p>
         <div className={classes.error}>{hasError && message}</div>
-        <form className={classes.form}>
+        <div className={classes.form}>
           <div>
             <label>Enter a word</label>
             <input
               placeholder='Enter a word'
               value={word}
               onChange={enterWord}
+              onKeyUp={submitWord}
               maxLength='20'
             />
           </div>
-          <div>
+          {/* <div>
             <label>Enter the word's definition</label>
             <textarea
               placeholder='Enter a definition of the word'
               value={definition}
               onChange={enterDefinition}
             />
-          </div>
-        </form>
+          </div> */}
+        </div>
         <button
           onClick={createGame}
           className={classes.submit}

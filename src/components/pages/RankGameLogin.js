@@ -20,7 +20,6 @@ const RankGameLogin = () => {
   const [word, setWord] = useState('');
   const [guesses_left, setGuessesLeft] = useState(8);
   const [guessedLetters, setGuessedLetters] = useState('');
-  const [hints_left, setHintsLeft] = useState(3);
 
   const fetchWord = (id) => {
     setLoading(true);
@@ -39,7 +38,7 @@ const RankGameLogin = () => {
         setWord(jsonbody.word);
         setGuessesLeft(jsonbody.guesses_left);
         setGuessedLetters(jsonbody.letters_guessed);
-        setHintsLeft(jsonbody.hints_left);
+        
       })
       .finally(() => {
         setLoading(false);
