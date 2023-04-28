@@ -1,5 +1,5 @@
 import classes from "./Header.module.css";
-
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const navigate = useNavigate();
 
@@ -12,8 +12,8 @@ const Header = () => {
       <header className={classes.header}>
         <h3 className={classes.title}>HANGMAN</h3>
         {/* check page, render either END GAME or BACK */}
-        <h3 className={classes.exit}>End Game</h3>
-      </header>
+        <h3 onClick={() => handleexit()} className={classes.exit}>End Game</h3>
+    </header>
     </div>
   );
 };
