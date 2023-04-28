@@ -42,3 +42,9 @@
     height: 50px;
     cursor: pointer;
 }
+
+.error {
+    color: red;
+    font-family: 'Patrick Hand';
+    margin-bottom: 1rem;
+}

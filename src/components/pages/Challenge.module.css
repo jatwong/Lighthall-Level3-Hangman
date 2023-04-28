@@ -79,6 +79,11 @@
     cursor: pointer;
 }
 
+.submit:disabled {
+    background-color: #8797aa;
+    cursor: default;
+}
+
 .share {
     display: flex;
     flex-direction: column;
@@ -103,6 +108,12 @@
     height: 1.5rem;
     cursor: pointer;
     margin-left: 20px;
+}
+
+.error {
+    color: red;
+    font-family: 'Patrick Hand';
+    letter-spacing: 1px;
 }
 
 @media screen and (max-width: 450px) {

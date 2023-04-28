@@ -15,7 +15,9 @@ const GameOver = (props) => {
     navigate('/');
   };
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    props.next();
+  };
 
   let win;
   if (props.win) {

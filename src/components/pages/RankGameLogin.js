@@ -11,6 +11,8 @@ import Cookies from 'js-cookie';
 const RankGameLogin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
@@ -37,8 +39,7 @@ const RankGameLogin = () => {
         setWord(jsonbody.word);
         setGuessesLeft(jsonbody.guesses_left);
         setGuessedLetters(jsonbody.letters_guessed);
-        setHintsLeft(jsonbody.hints_left)
-
+        setHintsLeft(jsonbody.hints_left);
       })
       .finally(() => {
         setLoading(false);
@@ -63,31 +64,43 @@ const RankGameLogin = () => {
     setUsername(e.target.value);
   };
 
+  let valid = false;
+  if (username !== '') {
+    valid = true;
+  }
+
   const enterName = (e) => {
-    if (e.keycode === 13 || e.key === 'Enter') {
-      onSubmit();
+    if (valid) {
+      if (e.keycode === 13 || e.key === 'Enter') {
+        onSubmit();
+      }
+    } else {
+      setHasError(true);
+      setErrorMsg('Please enter your name');
     }
   };
 
   const onSubmit = () => {
-    fetch('https://hangmanserver.jayraval20.repl.co/newplayer', {
-      method: 'POST',
-      body: JSON.stringify({
-        newplayer: username,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => {
-        return res.json();
+    if (valid) {
+      fetch('https://hangmanserver.jayraval20.repl.co/newplayer', {
+        method: 'POST',
+        body: JSON.stringify({
+          newplayer: username,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
-      .then((jsonbody) => {
-        Cookies.set('userid', jsonbody.user_id, { expires: 7 });
-        Cookies.set('username', username, { expires: 7 });
-        setLoggedIn(true);
-        setUserId(jsonbody.user_id);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((jsonbody) => {
+          Cookies.set('userid', jsonbody.user_id, { expires: 7 });
+          Cookies.set('username', username, { expires: 7 });
+          setLoggedIn(true);
+          setUserId(jsonbody.user_id);
+        });
+    }
   };
 
   const goBackHandler = () => {
@@ -95,8 +108,6 @@ const RankGameLogin = () => {
   };
 
   const endGameHandler = () => {
-    // submit final score to BE
-    console.log('ending game...');
     navigate('/');
     Cookies.remove('userid');
     Cookies.remove('username');
@@ -114,13 +125,14 @@ const RankGameLogin = () => {
         <div className={classes.page}>
           <div className={classes.inputDiv}>
             <p className={classes.label}>Enter your name</p>
+            <div className={classes.error}>{hasError && errorMsg}</div>
             <input
               className={classes.input}
               placeholder='Enter your name'
               value={username}
               onChange={newPlayer}
               onKeyUp={enterName}
-              maxLength="16"
+              maxLength='16'
             />
           </div>
           <img

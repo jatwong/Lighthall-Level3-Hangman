@@ -16,7 +16,7 @@ import hang7 from '../UI/img/Hang-7.png';
 import hangFinal from '../UI/img/Hang-final.png';
 
 const Game = (props) => {
-  const [guessedWord, setGuessedWord] = useState(props.word);
+  const [word, setWord] = useState(props.word);
   const [currentScore, setCurrentScore] = useState(props.score);
 
   const [guessesLeft, setGuessesLeft] = useState(props.guessesLeft || 8);
@@ -76,7 +76,6 @@ const Game = (props) => {
   };
 
   const handleletterclick = (letter) => {
-    console.log(letter);
     fetch(
       `https://hangmanserver.jayraval20.repl.co/make-guess/${props.userid}/${letter}`,
       {
@@ -93,7 +92,6 @@ const Game = (props) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setGuessedLetters(data.letters_guessed);
 
         if (data.flag === 'wrong' && data.guesses_left > 0) {
@@ -111,24 +109,40 @@ const Game = (props) => {
           setIsWinner(true);
           setGameOver(true);
           setCurrentScore(data.score);
-          logout();
         }
 
         setGuessesLeft(data.guesses_left);
 
-        setGuessedWord(data.word);
+        setWord(data.word);
 
         // set hints_left -- for displaying to user
-      })
-      .catch((error) => {
-        console.error('Error:', error);
       });
+  };
+
+  const nextGameHandler = () => {
+    fetch(`https://hangmanserver.jayraval20.repl.co/word/${props.userid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((jsonbody) => {
+        setCurrentScore(jsonbody.score);
+        setWord(jsonbody.word);
+        setGuessesLeft(jsonbody.guesses_left);
+        setGuessedLetters(jsonbody.letters_guessed);
+        setHintsLeft(jsonbody.hints_left);
+      });
+
+    setGameOver(false);
   };
 
   const getimage = () => {
     return images[wrong];
   };
-  console.log(props.word);
 
   return (
     <>
@@ -175,7 +189,7 @@ const Game = (props) => {
               ))}
             </div>
           </div>
-          <div className='word-arr'>{guessedWord}</div>
+          <div className='word-arr'>{word}</div>
           <div className='img-container'>
             <img className='img' src={getimage()} alt='hangman' />
           </div>
@@ -184,6 +198,7 @@ const Game = (props) => {
               username={props.username}
               score={currentScore}
               win={isWinner}
+              next={nextGameHandler}
             />
           )}
         </div>

@@ -1,13 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import Game from './game';
 
 const SharedGame = () => {
+  const navigate = useNavigate();
+
   const endGameHandler = () => {
-    // submit final score to BE
-    console.log('ending game...');
+    navigate('/');
   };
-  
+
   return (
     <>
+    
       <Game end={endGameHandler} />
     </>
   );

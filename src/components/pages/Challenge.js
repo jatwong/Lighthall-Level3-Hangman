@@ -11,6 +11,10 @@ const Challenge = () => {
   const [word, setWord] = useState('');
   const [definition, setDefinition] = useState('');
   const [newGame, setNewGame] = useState(false);
+
+  const [hasError, setHasError] = useState(false);
+  const [message, setMessage] = useState('');
+
   const [link, setLink] = useState(
     'http://localhost:3000/shared-game?session=abc123/'
   );
@@ -23,18 +27,38 @@ const Challenge = () => {
     setDefinition(e.target.value);
   };
 
+  let valid = false;
+  const hasSpaces = new RegExp(/\s/);
+
+  if (word !== '' && definition !== '' && definition.length > 2) {
+    valid = true;
+  }
+
   const createGame = () => {
-    setNewGame(true);
-    fetch('https://hangmanserver.jayraval20.repl.co/single-game', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        word: word,
-        definition: definition,
-      }),
-    });
+    setHasError(false);
+
+    if (hasSpaces.test(word)) {
+      setHasError(true);
+      setMessage('The word cannot have spaces.');
+    } else if (valid) {
+      fetch('https://hangmanserver.jayraval20.repl.co/single-game', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          word: word,
+          definition: definition,
+        }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setNewGame(true);
+          setLink('https://lighthall-team60-hangman.vercel.app' + data.url);
+        });
+    }
   };
 
   const goBackHandler = () => {
@@ -43,7 +67,6 @@ const Challenge = () => {
 
   const copyLinkHandler = () => {
     navigator.clipboard.writeText(link);
-    console.log('copied');
   };
 
   let content;
@@ -54,6 +77,7 @@ const Challenge = () => {
         <p className={classes.instructions}>
           Pick a word for your friend to guess
         </p>
+        <div className={classes.error}>{hasError && message}</div>
         <form className={classes.form}>
           <div>
             <label>Enter a word</label>
@@ -61,6 +85,7 @@ const Challenge = () => {
               placeholder='Enter a word'
               value={word}
               onChange={enterWord}
+              maxLength='20'
             />
           </div>
           <div>
@@ -72,7 +97,11 @@ const Challenge = () => {
             />
           </div>
         </form>
-        <button onClick={createGame} className={classes.submit}>
+        <button
+          onClick={createGame}
+          className={classes.submit}
+          disabled={!valid}
+        >
           Create game
         </button>
       </>
@@ -98,7 +127,7 @@ const Challenge = () => {
 
   return (
     <>
-      <Header exit={goBackHandler} />
+      <Header end={goBackHandler} />
       <div className={classes.page}>
         <p className={classes.title}>Challenge a friend</p>
         {content}
