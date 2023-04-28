@@ -80,13 +80,14 @@ const Game = () => {
     //     .catch(error => {
     //         console.error('Error:', error);
     //     });
-  };
 
     const getimage = () => {
         return images[wrong];
     }
 
     return (
+      <>
+      <Header page='game' exit={props.end}/>
         <div className='game-container'>
             <div className='user-stats'>
                 <div>
@@ -121,7 +122,6 @@ const Game = () => {
             </div>
             {gameOver && <GameOver username = {username} score={score} />}
         </div>
-      </div>
     </>
   );
 };
