@@ -1,4 +1,5 @@
-import './game.css'
+import Header from '../UI/Header';
+import './game.css';
 import { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import GameOver from './gameover';
@@ -59,12 +60,34 @@ const Game = () => {
         }
         setWordarray(newWordArray);
     }
+    setWordarray(newWordArray);
+    // fetch('/api/letter', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ letter: letter })
+    // })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         // handle response data here
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
 
     const getimage = () => {
         return images[wrong];
     }
 
     return (
+      <>
+      <Header page='game' exit={props.end}/>
         <div className='game-container'>
             <div className='user-stats'>
                 <div>
@@ -99,7 +122,8 @@ const Game = () => {
             </div>
             {gameOver && <GameOver username = {username} score={score} />}
         </div>
-    );
-}
+    </>
+  );
+};
 
 export default Game;
